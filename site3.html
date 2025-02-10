@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.name }} - Heritage Site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Mahabalipuram</h1>
+    </header>
+
+    <!-- Heritage Site Details Section -->
+    <section id="site-details">
+        <h2>Key Information</h2>
+        <ul>
+            <li><strong>Timings:</strong>6 to 4</li>
+            <li><strong>Contact:</strong>0436-2274476</li>
+            <li><strong>Description:</strong>nice place</li>
+        </ul>
+
+        <!-- Static Map (Google Maps API) -->
+        <h3>Location</h3>
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=10.7844,79.1324&zoom=15&size=600x400&markers=color:red%7C10.7844,79.1324&key=YOUR_GOOGLE_MAPS_API_KEY" alt="Site Location">
+
+        <!-- Button for Directions (opens Google Maps in new tab) -->
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination={{ site.lat }},{{ site.lon }}', '_blank')">Get Directions</button>
+    </section>
+
+    <!-- Audio Guide Section -->
+    <section id="audio-guide">
+        <button onclick="startAudioGuide()">Start Audio Guide</button>
+    </section>
+
+    <!-- Speaker Button for Queries -->
+    <section id="queries">
+        <button onclick="askQuery()">Ask a Question</button>
+    </section>
+
+    <!-- SOS Button -->
+    <button id="sosButton" onclick="sendEmergencyAlert()">SOS Alert</button>
+
+    <!-- Script to handle logic -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

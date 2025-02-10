@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Sites</title>
+    <link rel="stylesheet" href="frntstyle.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to the Heritage Site</h1>
+    </header>
+
+    <!-- Language and Location Request Section -->
+    <section id="language-location">
+        <label for="language">Select Language:</label>
+        <select id="language" onchange="setLanguage(event)">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <!-- Add more languages as needed -->
+        </select>
+
+        <button onclick="getUserLocation()">Enable Location</button>
+    </section>
+
+    <!-- Heritage Sites Display Section -->
+    <section id="heritage-sites">
+        <h2>Explore Heritage Sites</h2>
+        <div id="sites-list">
+            <!-- Example clickable images for 4 heritage sites -->
+            <div class="site-card">
+                <a href="site1.html">
+                    <img src="temple1.jpg" width="700" height="400">
+                    <h3>Brihadeeswarar Temple</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site2.html">
+                    <img src="temple2.jpeg" width="700" height="400">
+                    <h3>Airavatesvara Temple</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site3.html">
+                    <img src="temple3.jpg" width="700" height="400">
+                    <h3>Mahabalipuram</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site4.html">
+                    <img src="temple4.jpeg" width="700" height="400">
+                    <h3>Heritage Site 4</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOS Button -->
+    <button id="sosButton" onclick="sendEmergencyAlert()">SOS Alert</button>
+
+    <!-- Nearby Site Suggestions Section -->
+    <section id="nearby-sites">
+        <h2>Explore Nearby Heritage Sites</h2>
+        <div id="nearby-list"></div> <!-- Nearby sites will be displayed here -->
+    </section>
+
+    <!-- Script to handle logic -->
+    <script src="frntmain.js"></script>
+</body>
+</html>

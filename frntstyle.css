@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#language-location {
+    text-align: center;
+    margin: 20px;
+}
+
+#heritage-sites {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.site-card {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.site-card img {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+#sosButton {
+    background-color: red;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#sosButton:hover {
+    background-color: darkred;
+}
+
+#nearby-sites {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#nearby-sites div {
+    margin: 10px;
+    font-size: 18px;
+}
