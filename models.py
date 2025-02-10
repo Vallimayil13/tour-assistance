@@ -54,13 +54,21 @@ class HeritageSite:
     
     # Method to fetch nearby sites based on latitude and longitude
     @staticmethod
-    def get_nearby_sites(user_lat, user_lon):
+    def get_nearby_sites(user_lat, user_lon, max_distance=50):
+        # Set a max distance in kilometers (default: 50 km)
         nearby_sites = list(collection.find())
+        result_sites = []
+
         for site in nearby_sites:
-            site['_id'] = str(site['_id'])
+            site['_id'] = str(site['_id'])  # Convert MongoDB ObjectId to string
             distance = HeritageSite.haversine(user_lat, user_lon, site['latitude'], site['longitude'])
-            site['distance'] = distance
-        return nearby_sites
+
+            # If the site is within the specified max distance, add it to the result list
+            if distance <= max_distance:
+                site['distance'] = distance
+                result_sites.append(site)
+
+        return result_sites
 
 # Example Data Entry for Brihadeeswarar Temple
 brihadeeswarar_data = {
@@ -134,17 +142,8 @@ gangaikonda_cholapuram_data = {
     """
 }
 
-
-
-# Adding Brihadeeswarar Temple to MongoDB
+# Adding Sites to MongoDB
 HeritageSite.add_site(brihadeeswarar_data)
-
-# Adding Airavatesvara Temple to MongoDB
 HeritageSite.add_site(airavatesvara_data)
-
-# Adding Mahabalipuram to MongoDB
 HeritageSite.add_site(mahabalipuram_data)
-
-# Adding Gangaikonda Cholapuram to MongoDB
 HeritageSite.add_site(gangaikonda_cholapuram_data)
-

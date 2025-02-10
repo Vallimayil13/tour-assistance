@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template  # Import render_template
 from flask_cors import CORS
 from pymongo import MongoClient
 import openai
@@ -6,10 +6,14 @@ import requests  # For emergency notifications like Twilio, email, etc.
 from google.cloud import speech
 from google.cloud import texttospeech
 import os
+from views import emergency_blueprint  # Import the blueprint from views.py
 
 # Flask app setup
 app = Flask(__name__)
 CORS(app)
+
+# Register the emergency blueprint
+app.register_blueprint(emergency_blueprint)
 
 # MongoDB setup
 client = MongoClient("mongodb://localhost:27017/")  # Replace with your MongoDB URI
@@ -23,10 +27,11 @@ openai.api_key = "your-openai-api-key"
 speech_client = speech.SpeechClient()
 tts_client = texttospeech.TextToSpeechClient()
 
-# Define Root Route
+# Define Root Route to render HTML
 @app.route('/')
 def home():
-    return "Welcome to the Heritage Site API!"
+    # This will render index.html from the templates folder
+    return render_template('index.html')
 
 # Route to process voice input (via STT) and retrieve data based on query
 @app.route('/voice_query', methods=['POST'])
@@ -84,46 +89,6 @@ def query_heritage_sites_by_keywords(keywords):
         site['_id'] = str(site['_id'])
     
     return sites
-
-# Route to handle emergency alerts dynamically
-@app.route('/emergency', methods=['POST'])
-def emergency_alert():
-    data = request.get_json()
-    location = data.get('location')
-
-    if location:
-        message = f"Emergency Alert: User at location {location['lat']}, {location['lon']} needs help."
-
-        # Sending emergency message via Twilio or any other service
-        send_emergency_alert(message)
-
-        return jsonify({"message": "Emergency alert sent successfully."}), 200
-    return jsonify({"error": "Location data missing"}), 400
-
-# Function to send emergency alert (Example using Twilio for SMS)
-def send_emergency_alert(message):
-    # Replace with real Twilio credentials and phone numbers
-    twilio_sid = "your_twilio_sid"
-    twilio_auth_token = "your_twilio_auth_token"
-    twilio_phone_number = "your_twilio_phone_number"
-    emergency_contact_number = "emergency_number_to_notify"
-
-    # Send SMS using Twilio (example)
-    client = requests.post(
-        "https://api.twilio.com/2010-04-01/Accounts/{}/Messages.json".format(twilio_sid),
-        data={
-            "From": twilio_phone_number,
-            "To": emergency_contact_number,
-            "Body": message,
-        },
-        auth=(twilio_sid, twilio_auth_token),
-    )
-
-    # Check response status
-    if client.status_code == 201:
-        print("Emergency alert sent successfully.")
-    else:
-        print("Failed to send emergency alert.")
 
 # Run Flask app
 if __name__ == "__main__":
