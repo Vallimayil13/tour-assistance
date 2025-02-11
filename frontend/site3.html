@@ -3,8 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.name }} - Heritage Site</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Mahabalipuram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #site-details {
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #site-details h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #site-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #site-details table th, #site-details table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        #site-details table th {
+            background-color: #f4f4f4;
+        }
+
+        .images-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .images-container img {
+            width: 30%;
+            margin: 0 10px;
+            border-radius: 8px;
+        }
+
+        .description {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -12,21 +96,63 @@
         <h1>Mahabalipuram</h1>
     </header>
 
+    <!-- Images and Description Section -->
+    <section class="images-container">
+        <img src="https://via.placeholder.com/400x300?text=Temple+Image+1" alt="Mahabalipuram 1">
+        <img src="https://via.placeholder.com/400x300?text=Temple+Image+2" alt="Mahabalipuram 2">
+        <img src="https://via.placeholder.com/400x300?text=Temple+Image+3" alt="Mahabalipuram 3">
+    </section>
+
+    <div class="description">
+        <p>Mahabalipuram, also known as Mamallapuram, is a UNESCO World Heritage Site famous for its ancient rock-cut temples and monuments. The town is renowned for its intricately carved structures, including the Pancha Rathas and Arjuna's Penance, which showcase exceptional architectural and artistic craftsmanship. It is a coastal town located along the Bay of Bengal, offering both cultural heritage and scenic beauty. Mahabalipuram was a prominent center of art, architecture, and maritime trade during the Pallava dynasty. Today, it stands as a popular tourist destination, drawing visitors from around the world to explore its historical marvels.</p>
+    </div>
+
     <!-- Heritage Site Details Section -->
     <section id="site-details">
-        <h2>Key Information</h2>
-        <ul>
-            <li><strong>Timings:</strong>6 to 4</li>
-            <li><strong>Contact:</strong>0436-2274476</li>
-            <li><strong>Description:</strong>nice place</li>
-        </ul>
+        <h2>About Temple</h2>
+        <!-- Table to display Description and Detail -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Location</td>
+                    <td>Mahabalipuram (near Chennai)</td>
+                </tr>
+                <tr>
+                    <td>God</td>
+                    <td>Shiva</td>
+                </tr>
+                <tr>
+                    <td>Timings</td>
+                    <td>6.00 AM - 6.00 PM</td>
+                </tr>
+                
+                <tr>
+                    <td>Contact</td>
+                    <td>0452-2344360</td>
+                </tr>
+                <tr>
+                    <td>Built by</td>
+                    <td>Pallava Dynasty</td>
+                </tr>
+                <tr>
+                    <td>Nearest Places To Visit</td>
+                    <td>Arjuna's Penance , Pancha Rathas , Tiger Cave</td>
+                </tr>
+            </tbody>
+        </table>
 
         <!-- Static Map (Google Maps API) -->
         <h3>Location</h3>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=10.7844,79.1324&zoom=15&size=600x400&markers=color:red%7C10.7844,79.1324&key=YOUR_GOOGLE_MAPS_API_KEY" alt="Site Location">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=12.6202,80.1792&zoom=15&size=600x400&markers=color:red%7C10.7844,79.1324&key=YOUR_GOOGLE_MAPS_API_KEY" alt="Site Location">
 
         <!-- Button for Directions (opens Google Maps in new tab) -->
-        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination={{ site.lat }},{{ site.lon }}', '_blank')">Get Directions</button>
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=12.6202,80.1792', '_blank')">Get Directions</button>
     </section>
 
     <!-- Audio Guide Section -->
@@ -38,11 +164,9 @@
     <section id="queries">
         <button onclick="askQuery()">Ask a Question</button>
     </section>
-
-    <!-- SOS Button -->
-    <button id="sosButton" onclick="sendEmergencyAlert()">SOS Alert</button>
+    <br>
 
     <!-- Script to handle logic -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="frntmain.js"></script>
 </body>
 </html>
