@@ -44,6 +44,9 @@ header {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
 }
 
 #sosButton:hover {
@@ -52,10 +55,50 @@ header {
 
 #nearby-sites {
     text-align: center;
-    margin: 30px 0;
+    margin: 40px 0;
 }
 
-#nearby-sites div {
-    margin: 10px;
-    font-size: 18px;
+#nearby-sites h2 {
+    font-size: 2em;
+    color: darkgreen;
+}
+
+#nearby-sites button {
+    padding: 11px 20px;
+    background-color:#002366 ;
+    color: white;
+    border: none;
+    font-size: 1.1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#nearby-sites button:hover {
+    background-color: blueviolet;
+}
+
+#nearby-list {
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+#nearby-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#nearby-list li {
+    margin: 10px 0;
+}
+
+#nearby-list a {
+    text-decoration: none;
+    color: #2e3a47;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#nearby-list a:hover {
+    color: #ff4d4d;
 }
