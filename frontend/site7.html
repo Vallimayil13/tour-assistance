@@ -106,7 +106,7 @@
     </section>
 
     <div class="description">
-        <p>The Meenakshi Amman Temple is a magnificent example of Dravidian architecture, known for its intricate carvings and towering gopurams (gateway towers). The temple complex spans vast areas and features beautifully detailed sculptures, reflecting ancient art forms. Its structure includes a sacred pond and several halls, each showcasing elaborate artwork. The temple is renowned for its stunning architecture, drawing visitors with its historical and cultural significance. The vibrant colors and intricate designs make it one of the most iconic temple structures in India.</p>
+        <p><b>The Meenakshi Amman Temple</b> is a magnificent example of Dravidian architecture, known for its intricate carvings and towering gopurams (gateway towers). The temple complex spans vast areas and features beautifully detailed sculptures, reflecting ancient art forms. Its structure includes a sacred pond and several halls, each showcasing elaborate artwork. The temple is renowned for its stunning architecture, drawing visitors with its historical and cultural significance. The vibrant colors and intricate designs make it one of the most iconic temple structures in India.</p>
     </div>
 
     <!-- Heritage Site Details Section -->
@@ -156,12 +156,19 @@
             </tbody>
         </table>
 
-        <!-- Static Map (Google Maps API) -->
-        <h3>Location</h3>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=9.9199,78.1198&zoom=15&size=600x400&markers=color:red%7C10.7844,79.1324&key=YOUR_GOOGLE_MAPS_API_KEY" alt="Site Location">
-
+        
         <!-- Button for Directions (opens Google Maps in new tab) -->
-        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=9.9199,78.1198', '_blank')">Get Directions</button>
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=9.8112,78.14538', '_blank')">Get Directions</button>
+    </section>
+    <!-- Language Request Section -->
+    <section id="language">
+        <label for="language">Select Language:</label>
+        <select id="language" onchange="setLanguage(event)">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <!-- Add more languages as needed -->
+        </select>
     </section>
 
     <!-- Audio Guide Section -->

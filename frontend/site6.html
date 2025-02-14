@@ -142,12 +142,20 @@
             </tbody>
         </table>
 
-        <!-- Static Map (Google Maps API) -->
-        <h3>Location</h3>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=11.5,77.5&zoom=15&size=600x400&markers=color:red%7C10.7844,79.1324&key=YOUR_GOOGLE_MAPS_API_KEY" alt="Site Location">
+       
 
         <!-- Button for Directions (opens Google Maps in new tab) -->
-        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=11.5,77.5', '_blank')">Get Directions</button>
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=10.16755,77.06667', '_blank')">Get Directions</button>
+    </section>
+    <!-- Language Request Section -->
+    <section id="language">
+        <label for="language">Select Language:</label>
+        <select id="language" onchange="setLanguage(event)">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <!-- Add more languages as needed -->
+        </select>
     </section>
 
     <!-- Audio Guide Section -->

@@ -9,17 +9,29 @@ header {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 15px 0;
+}
+#location {
+    text-align: center;
+    margin: 15px 0px;
 }
 
-#language-location {
+#location button {
     text-align: center;
-    margin: 20px;
+    padding: 7px 14px;
+    background-color:darkgreen ;
+    color: white;
+    border: none;
+    font-size: 1.1em;
+    border-radius: 4px;
+}
+#location button:hover {
+    background-color:#4CAF50;
 }
 
 #heritage-sites {
     text-align: center;
-    margin: 30px 0;
+    margin: 10px 0;
 }
 
 .site-card {
@@ -55,7 +67,7 @@ header {
 
 #nearby-sites {
     text-align: center;
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 #nearby-sites h2 {
@@ -64,8 +76,8 @@ header {
 }
 
 #nearby-sites button {
-    padding: 11px 20px;
-    background-color:#002366 ;
+    padding: 7px 14px;
+    background-color:blueviolet ;
     color: white;
     border: none;
     font-size: 1.1em;
@@ -75,7 +87,7 @@ header {
 }
 
 #nearby-sites button:hover {
-    background-color: blueviolet;
+    background-color:MediumPurple;
 }
 
 #nearby-list {
