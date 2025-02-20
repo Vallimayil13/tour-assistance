@@ -4,102 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramanathaswamy Temple</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            text-align: center;
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        #site-details {
-            padding: 20px;
-            background-color: #fff;
-            margin: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        #site-details h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        #site-details table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        #site-details table th, #site-details table td {
-            padding: 10px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        #site-details table th {
-            background-color: #f4f4f4;
-        }
-
-        .images-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .images-container img {
-            height: 300px;
-            width: 30%;
-            margin: 0 10px;
-            border-radius: 8px;
-        }
-
-        .description {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        /* Optional: Style for the audio player */
-        #audio-guide {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        audio {
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="sitestyle.css">
+    
 </head>
 <body>
     <!-- Header Section -->
@@ -110,9 +16,9 @@
 
     <!-- Images and Description Section -->
     <section class="images-container">
-        <img src="rm1.jpg" alt="Ramanathaswamy Temple 1">
-        <img src="rm2.jpg" alt="Ramanathaswamy Temple 2">
-        <img src="rm3.jpg" alt="Ramanathaswamy Temple 3">
+        <img src="images/rm1.jpg" alt="Ramanathaswamy Temple 1">
+        <img src="images/rm2.jpg" alt="Ramanathaswamy Temple 2">
+        <img src="images/rm3.jpg" alt="Ramanathaswamy Temple 3">
     </section>
 
     <div class="description">
@@ -171,7 +77,7 @@
 
     <!-- Language Request Section -->
     <section id="language">
-        <label for="language">Select Language:</label>
+        <label for="language">Select Language for audio tour:</label>
         <select id="language" onchange="setLanguage(event)">
             <option value="en">English</option>
             <option value="ta">Tamil</option>
@@ -182,11 +88,7 @@
         </select>
     </section>
 
-    <!-- Audio Guide Section -->
     <section id="audio-guide">
-        <!-- Button to start audio guide -->
-        <button onclick="startAudioGuide()">Start Audio Guide</button>
-        
         <!-- Audio element for the guide -->
         <audio id="audio" controls>
             <source src="Ramanathaswamy_Temple_enAudio.mp3" type="audio/mp3">
@@ -206,15 +108,15 @@
         function setLanguage(event) {
             var selectedLanguage = event.target.value;
             if (selectedLanguage === "en") {
-                document.getElementById("audio").src = "Ramanathaswamy_Temple_enAudio.mp3";  // English audio
+                document.getElementById("audio").src = "audio tour/Ramanathaswamy_Temple_enAudio.mp3";  // English audio
             } else if (selectedLanguage === "ta") {
-                document.getElementById("audio").src = "Ramanathaswamy_Temple_taAudio.mp3";  // French audio 
+                document.getElementById("audio").src = "audio tour/Ramanathaswamy_Temple_taAudio.mp3";  // French audio 
             } else if (selectedLanguage === "fr") {
-                document.getElementById("audio").src = "Ramanathaswamy_Temple_frAudio.mp3";  // Spanish audio
+                document.getElementById("audio").src = "audio tour/Ramanathaswamy_Temple_frAudio.mp3";  // Spanish audio
             } else if (selectedLanguage === "ge") {
-                document.getElementById("audio").src = "Ramanathaswamy_Temple_deAudio.mp3";  // German audio
+                document.getElementById("audio").src = "audio tour/Ramanathaswamy_Temple_deAudio.mp3";  // German audio
             } else if (selectedLanguage === "hi") {
-                document.getElementById("audio").src = "Ramanathaswamy_Temple_hiAudio.mp3";  // Hindi audio
+                document.getElementById("audio").src = "audio tour/Ramanathaswamy_Temple_hiAudio.mp3";  // Hindi audio
             }
         }
     </script>
