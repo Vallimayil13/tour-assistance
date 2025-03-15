@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Sites</title>
+    <link rel="stylesheet" href="frntstyle.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Explore Tamil Nadu's Rich Heritage – Welcome, Traveler!</h1>
+    </header>
+
+   
+       
+
+    <!-- Heritage Sites Display Section -->
+    <section id="heritage-sites">
+        <h2>Explore Heritage Sites</h2>
+        <div id="sites-list">
+            <!-- Example clickable images for 7 heritage sites -->
+            <div class="site-card">
+                <a href="site1.html">
+                    <img src="temple1.jpg" alt="site1">
+                    <h3>Brihadeeswarar Temple</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site2.html">
+                    <img src="temple2.jpeg" alt="site2">
+                    <h3>Airavatesvara Temple</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site3.html">
+                    <img src="temple3.jpg" alt="site3">
+                    <h3>Mahabalipuram</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site4.html">
+                    <img src="temple4.jpeg" alt="site4">
+                    <h3>Gangaikonda Cholapuram</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site5.html">
+                    <img src="site5.jpeg" alt="site5">
+                    <h3>Nilgiri Mountain Railway</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site6.html">
+                    <img src="site6.jpg" alt="site6">
+                    <h3>Western Ghats</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site7.html">
+                    <img src="temple7.jpg" alt="site7">
+                    <h3>Meenakshi Amman Temple</h3>
+                </a>
+            </div>
+            <div class="site-card">
+                <a href="site8.html">
+                    <img src="temple8.jpg" alt="site8">
+                    <h3>Ramanathaswamy Temple</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOS Button -->
+    <button id="sosButton" onclick="sendEmergencyAlert()">SOS Alert</button>
+
+    <!-- Nearby Site Suggestions Section -->
+    <section id="nearby-sites">
+        <h2>Discover Nearby Heritage Gems</h2>
+        <button onclick="getUserLocation()">View Now</button> <!-- Button to trigger location-based recommendations -->
+        <div id="nearby-list"></div> <!-- Nearby sites will be displayed here -->
+    </section>
+
+    <!-- Script to handle logic -->
+    <script>
+        const heritageSites = [
+            { name: 'Brihadeeswarar Temple', latitude: 10.78282, longitude: 79.13144 },
+            { name: 'Airavatesvara Temple', latitude: 10.94860, longitude: 79.35651 },
+            { name: 'Mahabalipuram', latitude: 12.61652, longitude: 80.19930 },
+            { name: 'Gangaikonda Cholapuram', latitude: 11.20648, longitude: 79.44844 },
+            { name: 'Nilgiri Mountain Railway', latitude: 11.33906, longitude: 76.82101 },
+            { name: 'Western Ghats', latitude: 10.16755, longitude: 77.06667 },
+            { name: 'Meenakshi Amman Temple', latitude: 9.8112, longitude: 78.14538 },
+            { name: 'Ramanathaswamy Temple ', latitude: 9.28873, longitude: 79.31736 }
+        ];
+
+        // Function to get user's location and recommend nearby sites
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showNearbySites, showError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Function to show nearby sites
+        function showNearbySites(position) {
+            const userLat = position.coords.latitude;
+            const userLon = position.coords.longitude;
+
+            // Sort sites based on distance to the user
+            heritageSites.sort((a, b) => {
+                return calculateDistance(userLat, userLon, a.latitude, a.longitude) - calculateDistance(userLat, userLon, b.latitude, b.longitude);
+            });
+
+            // Display top 3 nearby sites
+            let nearbyHtml = "<ul>";
+            for (let i = 0; i < 3; i++) {
+                nearbyHtml += `<li><a href="${heritageSites[i].name.toLowerCase().replace(/\s+/g, '')}.html">${heritageSites[i].name}</a></li>`;
+            }
+            nearbyHtml += "</ul>";
+            document.getElementById('nearby-list').innerHTML = nearbyHtml;
+        }
+
+        // Function to handle geolocation error
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
+
+        // Haversine formula to calculate distance between two points (in kilometers)
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the Earth in kilometers
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c; // Distance in kilometers
+        }
+    </script>
+
+</body>
+</html>
