@@ -3,46 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.name }} - Heritage Site</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Airavatesvara Temple</title>
+    <link rel="stylesheet" href="sitestyle.css">
+    
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <h1>Airavatesvara Temple</h1>
     </header>
+    <br>
+
+    <!-- Images and Description Section -->
+    <section class="images-container">
+        <img src="images/ar1.jpeg" alt="Airavatesvara Temple 1">
+        <img src="images/ar2.jpg" alt="Airavatesvara Temple 2">
+        <img src="images/ar3.jpg" alt="Airavatesvara Temple 3">
+    </section>
+
+    <div class="description">
+        <p><b>Airavatesvara Temple</b> in Darasuram, Tamil Nadu, is a <b>UNESCO World Heritage Site</b> renowned for its remarkable architecture. The temple is an excellent example of Dravidian style, with intricate carvings and detailed sculptures adorning its walls and pillars. Its central dome is an engineering marvel, and the temple complex is known for its impressive stone carvings and artwork. The structure features a large, beautifully designed courtyard surrounded by smaller shrines and mandapas. Airavatesvara Temple is celebrated for its historical significance and architectural grandeur, making it a must-visit cultural landmark.</p>
+    </div>
 
     <!-- Heritage Site Details Section -->
     <section id="site-details">
-        <h2>Key Information</h2>
-        <ul>
-            <li><strong>Timings:</strong>6 to 4</li>
-            <li><strong>Contact:</strong>0436-2274476</li>
-            <li><strong>Description:</strong>nice place</li>
-        </ul>
+        <h2>About Temple</h2>
+        <!-- Table to display Description and Detail -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Location📍</td>
+                    <td>Darasuram (near Kumbakonam)</td>
+                </tr>
+                <tr>
+                    <td>God🙏</td>
+                    <td>Shiva</td>
+                </tr>
+                <tr>
+                    <td>Timings⏰</td>
+                    <td>6.00 AM to 8.00 PM</td>
+                </tr>
+                
+                <tr>
+                    <td>Contact📞</td>
+                    <td>0435-2417157</td>
+                </tr>
+                <tr>
+                    <td>Built by🏗️</td>
+                    <td>Rajaraja Chola II</td>
+                </tr>
+                <tr>
+                    <td>Special Occasion🎉</td>
+                    <td>Margazhi Festival , Panguni Uthiram ,  Maha Shivaratri , Karthigai Deepam</td>
+                </tr>
+                <tr>
+                    <td>Nearest Places To Visit🗺️</td>
+                    <td>Nageswaran Temple , Gangaikonda Cholapuram , Thanjavur Palace</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <!-- Static Map (Google Maps API) -->
-        <h3>Location</h3>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=10.7844,79.1324&zoom=15&size=600x400&markers=color:red%7C10.7844,79.1324&key=YOUR_GOOGLE_MAPS_API_KEY" alt="Site Location">
+        
 
         <!-- Button for Directions (opens Google Maps in new tab) -->
-        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination={{ site.lat }},{{ site.lon }}', '_blank')">Get Directions</button>
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=10.94860,79.35651', '_blank')">Get Directions</button>
     </section>
+   <!-- Language Request Section -->
+   <section id="language">
+    <label for="language">Select Language for audio tour:</label>
+    <select id="language" onchange="setLanguage(event)">
+        <option value="en">English</option>
+        <option value="ta">Tamil</option>
+        <option value="hi">Hindi</option>
+        <option value="fr">French</option>
+        <option value="ge">German</option>
+        <!-- Add more languages as needed -->
+    </select>
+</section>
 
-    <!-- Audio Guide Section -->
-    <section id="audio-guide">
-        <button onclick="startAudioGuide()">Start Audio Guide</button>
-    </section>
+<!-- Audio Guide Section -->
+<section id="audio-guide">
+    
+    
+     <!-- Audio element for the guide -->
+     <audio id="audio-tour" controls>
+        <source src="Airavatesvara_Temple_enAudio_Tour.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+   
+</section>
 
-    <!-- Speaker Button for Queries -->
-    <section id="queries">
-        <button onclick="askQuery()">Ask a Question</button>
-    </section>
+<!-- Script to handle logic -->
+<script>
+    // Function to start the audio guide
+    function startAudioGuide() {
+        var audio = document.getElementById("audio-tour");
+        audio.play();  // Play the audio when the button is clicked
+    }
 
-    <!-- SOS Button -->
-    <button id="sosButton" onclick="sendEmergencyAlert()">SOS Alert</button>
+    // Optional: Logic to change language based on dropdown selection
+    function setLanguage(event) {
+        var selectedLanguage = event.target.value;
+        if (selectedLanguage === "en") {
+            document.getElementById("audio-tour").src = "audio tour/Airavatesvara_Temple_enAudio_Tour.mp3";  // English audio
+        } else if (selectedLanguage === "ta") {
+            document.getElementById("audio-tour").src = "audio tour/Airavatesvara_Temple_taAudio_Tour.mp3";  // French audio 
+        } else if (selectedLanguage === "fr") {
+            document.getElementById("audio-tour").src = "audio tour/Airavatesvara_Temple_frAudio_Tour.mp3";  // Spanish audio
+        } else if (selectedLanguage === "ge") {
+            document.getElementById("audio-tour").src = "audio tour/Airavatesvara_Temple_geAudio_Tour.mp3";  // German audio
+        } else if (selectedLanguage === "hi") {
+            document.getElementById("audio-tour").src = "audio tour/Airavatesvara_Temple_hiAudio_Tour.mp3";  // Hindi audio
+        }
+    }
+</script>
+<div>
+    <h2>Ask a Question:</h2>
+    <button id="startRecording">🎤 Start Recording</button>
+    <p id="userQuestion">You asked: </p>
+    <p id="answer"></p>
+</div>
 
+<!-- Audio section to play response -->
+<audio id="audio" controls>
+    Your browser does not support the audio element.
+</audio>
     <!-- Script to handle logic -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="frntmain.js"></script>
 </body>
 </html>

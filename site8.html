@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramanathaswamy Temple</title>
+    <link rel="stylesheet" href="sitestyle.css">
+    
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Ramanathaswamy Temple</h1>
+    </header>
+    <br>
+
+    <!-- Images and Description Section -->
+    <section class="images-container">
+        <img src="images/rm1.jpg" alt="Ramanathaswamy Temple 1">
+        <img src="images/rm2.jpg" alt="Ramanathaswamy Temple 2">
+        <img src="images/rm3.jpg" alt="Ramanathaswamy Temple 3">
+    </section>
+
+    <div class="description">
+        <p><b>The Ramanathaswamy Temple</b> is renowned for its exceptional Dravidian architecture, with grand, intricately carved pillars and massive corridors. It is one of the holiest and most visited sites in the country. The temple complex features 22 sacred water tanks, each believed to have therapeutic properties. Its architectural splendor includes one of the longest corridors in any temple, adorned with beautiful sculptures and artwork. The site is an important pilgrimage destination, drawing visitors not only for its religious significance but also for its historical and architectural value.</p>
+    </div>
+
+    <!-- Heritage Site Details Section -->
+    <section id="site-details">
+        <h2>About Temple</h2>
+        <!-- Table to display Description and Detail -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Location📍</td>
+                    <td>Rameswaram</td>
+                </tr>
+                <tr>
+                    <td>God🙏</td>
+                    <td>Shiva</td>
+                </tr>
+                <tr>
+                    <td>Morning Timings🌅</td>
+                    <td>5.00 AM to 1.00 PM</td>
+                </tr>
+                <tr>
+                    <td>Evening Timings🌇</td>
+                    <td>3.00 PM to 9.00 PM</td>
+                </tr>
+                <tr>
+                    <td>Contact📞</td>
+                    <td>04573 221 223</td>
+                </tr>
+                <tr>
+                    <td>Built by🏗️</td>
+                    <td>Raja Raja Chola I</td>
+                </tr>
+                <tr>
+                    <td>Special Occasion🎉</td>
+                    <td>Maha Shivaratri, Thirukalyanam, Vasanthotsavam</td>
+                </tr>
+                <tr>
+                    <td>Nearest Places To Visit🗺️</td>
+                    <td>Dhanushkodi, Pamban Bridge, Agni Theertham</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Button for Directions (opens Google Maps in new tab) -->
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=9.28873,79.31736', '_blank')">Get Directions</button>
+    </section>
+
+    <!-- Language Request Section -->
+    <section id="language">
+        <label for="language">Select Language for audio tour:</label>
+        <select id="language" onchange="setLanguage(event)">
+            <option value="en">English</option>
+            <option value="ta">Tamil</option>
+            <option value="hi">Hindi</option>
+            <option value="fr">French</option>
+            <option value="ge">German</option>
+            <!-- Add more languages as needed -->
+        </select>
+    </section>
+
+    <section id="audio-guide">
+        <!-- Audio element for the guide -->
+        <audio id="audio-tour" controls>
+            <source src="Ramanathaswamy_Temple_enAudio.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </section>
+
+    <!-- Script to handle logic -->
+    <script>
+        // Function to start the audio guide
+        function startAudioGuide() {
+            var audio = document.getElementById("audio-tour");
+            audio.play();  // Play the audio when the button is clicked
+        }
+
+        // Optional: Logic to change language based on dropdown selection
+        function setLanguage(event) {
+            var selectedLanguage = event.target.value;
+            if (selectedLanguage === "en") {
+                document.getElementById("audio-tour").src = "audio tour/Ramanathaswamy_Temple_enAudio.mp3";  // English audio
+            } else if (selectedLanguage === "ta") {
+                document.getElementById("audio-tour").src = "audio tour/Ramanathaswamy_Temple_taAudio.mp3";  // French audio 
+            } else if (selectedLanguage === "fr") {
+                document.getElementById("audio-tour").src = "audio tour/Ramanathaswamy_Temple_frAudio.mp3";  // Spanish audio
+            } else if (selectedLanguage === "ge") {
+                document.getElementById("audio-tour").src = "audio tour/Ramanathaswamy_Temple_deAudio.mp3";  // German audio
+            } else if (selectedLanguage === "hi") {
+                document.getElementById("audio").src = "audio tour/Ramanathaswamy_Temple_hiAudio.mp3";  // Hindi audio
+            }
+        }
+    </script>
+  <div>
+    <h2>Ask a Question:</h2>
+    <button id="startRecording">🎤 Start Recording</button>
+    <p id="userQuestion">You asked: </p>
+    <p id="answer"></p>
+</div>
+
+<!-- Audio section to play response -->
+<audio id="audio" controls>
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    // Speech-to-Text setup using Web Speech API
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US'; // Set language to English
+
+    // Event listener to start recording when the button is clicked
+    document.getElementById("startRecording").addEventListener("click", function() {
+        recognition.start(); // Start the recognition process
+    });
+
+    // When speech is detected, send it to the backend
+    recognition.onresult = function(event) {
+        const userQuestion = event.results[0][0].transcript; // Get recognized text
+        document.getElementById("userQuestion").textContent = "You asked: " + userQuestion; // Display the question
+
+        // Send the recognized question to the backend (Flask)
+        fetch("http://127.0.0.1:5000/ask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ "question": userQuestion })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display the text answer
+            document.getElementById("answer").textContent = data.answer;
+
+            // Set the audio source to the path returned from the backend
+            const audioElement = document.getElementById("audio");
+            audioElement.src = data.audio_path;
+            audioElement.load();  // Reload the audio element
+            audioElement.play();  // Play the audio
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    };
+
+    // Error handling for STT
+    recognition.onerror = function(event) {
+        console.log("Error occurred in speech recognition: " + event.error);
+    };
+</script>
+</body>
+</html>

@@ -3,46 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.name }} - Heritage Site</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Gangaikonda Cholapuram</title>
+    <link rel="stylesheet" href="sitestyle.css">
+    
+    </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <h1>Gangaikonda Cholapuram</h1>
     </header>
+    <br>
+
+    <!-- Images and Description Section -->
+    <section class="images-container">
+        <img src="images/gk1.jpg" alt="Gangaikonda Cholapuram 1">
+        <img src="images/gk2.jpg" alt="Gangaikonda Cholapuram 2">
+        <img src="images/gk3.jpg" alt="Gangaikonda Cholapuram 3">
+    </section>
+
+    <div class="description">
+        <p><b>Gangaikonda Cholapuram</b> is a <b>UNESCO World Heritage Site</b> renowned for its architectural brilliance. The temple complex is celebrated for its grand structure and intricate carvings, reflecting the zenith of Dravidian architecture. Its towering central dome and detailed sculptures make it one of the most impressive examples of ancient Indian architecture. The temple also features a large courtyard surrounded by smaller shrines, adding to its majestic appearance. This historic monument is a significant cultural landmark, attracting visitors with its blend of art, history, and architectural grandeur.</p>
+    </div>
 
     <!-- Heritage Site Details Section -->
     <section id="site-details">
-        <h2>Key Information</h2>
-        <ul>
-            <li><strong>Timings:</strong>6 to 4</li>
-            <li><strong>Contact:</strong>0436-2274476</li>
-            <li><strong>Description:</strong>nice place</li>
-        </ul>
+        <h2>About Temple</h2>
+        <!-- Table to display Description and Detail -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Location📍</td>
+                    <td>Gangaikonda Cholapuram(near Ariyalur)</td>
+                </tr>
+                <tr>
+                    <td>God🙏</td>
+                    <td>Shiva</td>
+                </tr>
+                <tr>
+                    <td>Morning Timings🌅</td>
+                    <td>6.00 AM - 12.00 PM</td>
+                </tr>
+                <tr>
+                    <td>Evening Timings🌇</td>
+                    <td>4.00 PM - 8:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Contact📞</td>
+                    <td>9751341108</td>
+                </tr>
+                <tr>
+                    <td>Built by🏗️</td>
+                    <td>Rajendra Chola I</td>
+                </tr>
+                <tr>
+                    <td>Special Occasion🎉</td>
+                    <td>Maha Shivaratri , Aipassi Full moon day , Panguni Festival , Margazhi Thiruvadhirai</td>
+                </tr>
+                <tr>
+                    <td>Nearest Places To Visit🗺️</td>
+                    <td>Airavatesvara Temple , Kailasanathar Temple , Kudumiyanmalai Temple</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <!-- Static Map (Google Maps API) -->
-        <h3>Location</h3>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=10.7844,79.1324&zoom=15&size=600x400&markers=color:red%7C10.7844,79.1324&key=YOUR_GOOGLE_MAPS_API_KEY" alt="Site Location">
-
+       
         <!-- Button for Directions (opens Google Maps in new tab) -->
-        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination={{ site.lat }},{{ site.lon }}', '_blank')">Get Directions</button>
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=11.20648,79.44844', '_blank')">Get Directions</button>
     </section>
+    <!-- Language Request Section -->
+   <section id="language">
+    <label for="language">Select Language for audio tour:</label>
+    <select id="language" onchange="setLanguage(event)">
+        <option value="en">English</option>
+        <option value="ta">Tamil</option>
+        <option value="hi">Hindi</option>
+        <option value="fr">French</option>
+        <option value="ge">German</option>
+        <!-- Add more languages as needed -->
+    </select>
+</section>
 
-    <!-- Audio Guide Section -->
-    <section id="audio-guide">
-        <button onclick="startAudioGuide()">Start Audio Guide</button>
-    </section>
+<!-- Audio Guide Section -->
+<section id="audio-guide">
+    
+    
+     <!-- Audio element for the guide -->
+     <audio id="audio-tour" controls>
+        <source src="Gangaikonda_Cholapuram_Temple_enAudio_Tour.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+   
+</section>
 
-    <!-- Speaker Button for Queries -->
-    <section id="queries">
-        <button onclick="askQuery()">Ask a Question</button>
-    </section>
+<!-- Script to handle logic -->
+<script>
+    // Function to start the audio guide
+    function startAudioGuide() {
+        var audio = document.getElementById("audio-tour");
+        audio.play();  // Play the audio when the button is clicked
+    }
 
-    <!-- SOS Button -->
-    <button id="sosButton" onclick="sendEmergencyAlert()">SOS Alert</button>
+    // Optional: Logic to change language based on dropdown selection
+    function setLanguage(event) {
+        var selectedLanguage = event.target.value;
+        if (selectedLanguage === "en") {
+            document.getElementById("audio-tour").src = "audio tour/Gangaikonda_Cholapuram_Temple_enAudio_Tour.mp3";  // English audio
+        } else if (selectedLanguage === "ta") {
+            document.getElementById("audio-tour").src = "audio tour/Gangaikonda_Cholapuram_Temple_taAudio_Tour.mp3";  // French audio 
+        } else if (selectedLanguage === "fr") {
+            document.getElementById("audio-tour").src = "audio tour/Gangaikonda_Cholapuram_Temple_frAudio_Tour.mp3";  // Spanish audio
+        } else if (selectedLanguage === "ge") {
+            document.getElementById("audio-tour").src = "audio tour/Gangaikonda_Cholapuram_Temple_deAudio_Tour.mp3";  // German audio
+        } else if (selectedLanguage === "hi") {
+            document.getElementById("audio-tour").src = "audio tour/Gangaikonda_Cholapuram_Temple_hiAudio_Tour.mp3";  // Hindi audio
+        }
+    }
+</script>
+<div>
+    <h2>Ask a Question:</h2>
+    <button id="startRecording">🎤 Start Recording</button>
+    <p id="userQuestion">You asked: </p>
+    <p id="answer"></p>
+</div>
 
+<!-- Audio section to play response -->
+<audio id="audio" controls>
+    Your browser does not support the audio element.
+</audio>
     <!-- Script to handle logic -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="frntmain.js"></script>
 </body>
 </html>

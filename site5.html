@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahabalipuram</title>
+    <title>Nilgiri Mountain Railway</title>
     <link rel="stylesheet" href="sitestyle.css">
     
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Mahabalipuram</h1>
+        <h1>Nilgiri Mountain Railway</h1>
     </header>
     <br>
 
     <!-- Images and Description Section -->
     <section class="images-container">
-        <img src="images/ml1.jpg" alt="Mahabalipuram 1">
-        <img src="images/ml2.jpg" alt="Mahabalipuram 2">
-        <img src="images/ml3.jpg" alt="Mahabalipuram 3">
+        <img src="images/nm1.jpeg" alt="Nilgiri Mountain Railway 1">
+        <img src="images/nm2.jpeg" alt="Nilgiri Mountain Railway 2">
+       
     </section>
 
     <div class="description">
-        <p><b>Mahabalipuram</b>, also known as <b>Mamallapuram</b>, is a <b>UNESCO World Heritage Site</b> famous for its ancient rock-cut temples and monuments. The town is renowned for its intricately carved structures, including the Pancha Rathas and Arjuna's Penance, which showcase exceptional architectural and artistic craftsmanship. It is a coastal town located along the Bay of Bengal, offering both cultural heritage and scenic beauty. Mahabalipuram was a prominent center of art, architecture, and maritime trade during the Pallava dynasty. Today, it stands as a popular tourist destination, drawing visitors from around the world to explore its historical marvels.</p>
+        <p><b>The Nilgiri Mountain Railway (NMR)</b> is a <b>UNESCO World Heritage Site</b> that operates a scenic 46 km route from Mettupalayam to Ooty. It traverses the Nilgiri Hills, offering breathtaking views of forests, valleys, and tea plantations. The railway is famous for its historic steam locomotives and the unique cogwheel system used to navigate steep gradients. The journey provides a nostalgic experience, showcasing early 20th-century engineering amidst stunning landscapes. As both a cultural and tourist attraction, the NMR remains a vital part of the region's heritage and charm.</p>
     </div>
 
     <!-- Heritage Site Details Section -->
     <section id="site-details">
-        <h2>About Temple</h2>
+        <h2>About NMR</h2>
         <!-- Table to display Description and Detail -->
         <table>
             <thead>
@@ -39,39 +39,34 @@
             <tbody>
                 <tr>
                     <td>Location📍</td>
-                    <td>Mahabalipuram (near Chennai)</td>
+                    <td>Mettupalayam to Ooty (Udhagamandalam)</td>
                 </tr>
-                <tr>
-                    <td>God🙏</td>
-                    <td>Shiva</td>
-                </tr>
+               
                 <tr>
                     <td>Timings⏰</td>
-                    <td>6.00 AM - 6.00 PM</td>
+                    <td>7.00 AM to 5.00 PM</td>
                 </tr>
                 
                 <tr>
                     <td>Contact📞</td>
-                    <td>0452-2344360</td>
+                    <td>+91 0755 3934141</td>
                 </tr>
                 <tr>
                     <td>Built by🏗️</td>
-                    <td>Pallava Dynasty</td>
+                    <td>British colonial administration</td>
                 </tr>
-                <tr>
-                    <td>Special Occasion🎉</td>
-                    <td>Indian Dance Festival , Pongal , Shivaratri , Navaratri</td>
-                </tr>
+                
                 <tr>
                     <td>Nearest Places To Visit🗺️</td>
-                    <td>Arjuna's Penance , Pancha Rathas , Tiger Cave</td>
+                    <td>Ooty Lake , Doddabetta Peak , Botanical Gardens</td>
                 </tr>
             </tbody>
         </table>
 
         
+
         <!-- Button for Directions (opens Google Maps in new tab) -->
-        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=12.61652,80.19930', '_blank')">Get Directions</button>
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=11.33906,76.82101', '_blank')">Get Directions</button>
     </section>
     <!-- Language Request Section -->
    <section id="language">
@@ -90,12 +85,11 @@
 <section id="audio-guide">
     
     
-     <!-- Audio element for the guide -->
-     <audio id="audio-tour" controls>
-        <source src="Mahabalipuram_Temple_enAudio_Tour.mp3" type="audio/mp3">
+    <!-- Audio element for the guide -->
+    <audio id="audio-tour" controls>
+        <source src="Nilgiri_Mountain_Railway_enAudio_Tour.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-   
 </section>
 
 <!-- Script to handle logic -->
@@ -110,15 +104,15 @@
     function setLanguage(event) {
         var selectedLanguage = event.target.value;
         if (selectedLanguage === "en") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_enAudio_Tour.mp3";  // English audio
+            document.getElementById("audio-tour").src = "audio tour/Nilgiri_Mountain_Railway_enAudio_Tour.mp3";  // English audio
         } else if (selectedLanguage === "ta") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_taAudio_Tour.mp3";  // French audio 
+            document.getElementById("audio-tour").src = "audio tour/Nilgiri_Mountain_Railway_taAudio_Tour.mp3";  // French audio 
         } else if (selectedLanguage === "fr") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_frAudio_Tour.mp3";  // Spanish audio
+            document.getElementById("audio-tour").src = "audio tour/Nilgiri_Mountain_Railway_frAudio_Tour.mp3";  // Spanish audio
         } else if (selectedLanguage === "ge") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_deAudio_Tour.mp3";  // German audio
+            document.getElementById("audio-tour").src = "audio tour/Nilgiri_Mountain_Railway_deAudio_Tour.mp3";  // German audio
         } else if (selectedLanguage === "hi") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_hiAudio_Tour.mp3";  // Hindi audio
+            document.getElementById("audio-tour").src = "audio tour/Nilgiri_Mountain_Railway_hiAudio_Tour.mp3";  // Hindi audio
         }
     }
 </script>
@@ -133,7 +127,6 @@
 <audio id="audio" controls>
     Your browser does not support the audio element.
 </audio>
-
     <!-- Script to handle logic -->
     <script src="frntmain.js"></script>
 </body>

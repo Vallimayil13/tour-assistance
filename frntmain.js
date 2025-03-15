@@ -1,64 +1,43 @@
-let userLocation = { lat: null, lon: null };
 
-// Request user location
-function getUserLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            userLocation.lat = position.coords.latitude;
-            userLocation.lon = position.coords.longitude;
-            alert("Location enabled!");
-            getNearbySites(userLocation.lat, userLocation.lon);  // Fetch nearby sites
-        }, function() {
-            alert("Location access denied. Some features may not work.");
-        });
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
-}
+// Speech-to-Text setup using Web Speech API
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = 'en-US'; // Set language to English
 
-// Fetch nearby sites from the backend
-function getNearbySites(lat, lon) {
-    fetch(`/nearby_sites?lat=${lat}&lon=${lon}`)
-        .then(response => response.json())
-        .then(data => {
-            const nearbyList = document.getElementById('nearby-list');
-            nearbyList.innerHTML = '';  // Clear any previous content
-            data.forEach(site => {
-                const siteDiv = document.createElement('div');
-                siteDiv.innerHTML = `<strong>${site.name}</strong> <br> ${site.description}`;
-                nearbyList.appendChild(siteDiv);
-            });
-        })
-        .catch(error => console.error('Error fetching nearby sites:', error));
-}
+// Event listener to start recording when the button is clicked
+document.getElementById("startRecording").addEventListener("click", function() {
+    recognition.start(); // Start the recognition process
+});
 
-// Send emergency alert (post user location)
-function sendEmergencyAlert() {
-    if (userLocation.lat && userLocation.lon) {
-        const location = { lat: userLocation.lat, lon: userLocation.lon };
-        fetch('/emergency', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ location: location })
-        })
-        .then(response => response.json())
-        .then(data => alert(data.message))
-        .catch(error => alert('Failed to send alert.'));
-    } else {
-        alert("Please enable location first.");
-    }
-}
+// When speech is detected, send it to the backend
+recognition.onresult = function(event) {
+    const userQuestion = event.results[0][0].transcript; // Get recognized text
+    document.getElementById("userQuestion").textContent = "You asked: " + userQuestion; // Display the question
 
-// Audio Guide button functionality
-function startAudioGuide() {
-    alert("Audio guide started for this heritage site.");
-    // Implement actual audio guide functionality here.
-}
+    // Send the recognized question to the backend (Flask)
+    fetch("http://127.0.0.1:5000/ask", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "question": userQuestion })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display the text answer
+        document.getElementById("answer").textContent = data.answer;
 
-// Ask Query functionality
-function askQuery() {
-    alert("Please ask your query here.");
-    // You can implement speech-to-text or other query-related functionality here.
-}
+        // Set the audio source to the path returned from the backend
+        const audioElement = document.getElementById("audio");
+        audioElement.src = data.audio_path;
+        audioElement.load();  // Reload the audio element
+        audioElement.play();  // Play the audio
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+};
+
+// Error handling for STT
+recognition.onerror = function(event) {
+    console.log("Error occurred in speech recognition: " + event.error);
+};

@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahabalipuram</title>
+    <title>Meenakshi Amman Temple</title>
     <link rel="stylesheet" href="sitestyle.css">
     
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Mahabalipuram</h1>
+        <h1>Meenakshi Amman Temple</h1>
     </header>
     <br>
 
     <!-- Images and Description Section -->
     <section class="images-container">
-        <img src="images/ml1.jpg" alt="Mahabalipuram 1">
-        <img src="images/ml2.jpg" alt="Mahabalipuram 2">
-        <img src="images/ml3.jpg" alt="Mahabalipuram 3">
+        <img src="images/ma1.jpg" alt="Meenakshi Amman Temple 1">
+        <img src="images/ma2.jpg" alt="Meenakshi Amman Temple 2">
+        <img src="images/ma3.jpg" alt="Meenakshi Amman Temple 3">
     </section>
 
     <div class="description">
-        <p><b>Mahabalipuram</b>, also known as <b>Mamallapuram</b>, is a <b>UNESCO World Heritage Site</b> famous for its ancient rock-cut temples and monuments. The town is renowned for its intricately carved structures, including the Pancha Rathas and Arjuna's Penance, which showcase exceptional architectural and artistic craftsmanship. It is a coastal town located along the Bay of Bengal, offering both cultural heritage and scenic beauty. Mahabalipuram was a prominent center of art, architecture, and maritime trade during the Pallava dynasty. Today, it stands as a popular tourist destination, drawing visitors from around the world to explore its historical marvels.</p>
+        <p><b>The Meenakshi Amman Temple</b> is a magnificent example of Dravidian architecture, known for its intricate carvings and towering gopurams (gateway towers). The temple complex spans vast areas and features beautifully detailed sculptures, reflecting ancient art forms. Its structure includes a sacred pond and several halls, each showcasing elaborate artwork. The temple is renowned for its stunning architecture, drawing visitors with its historical and cultural significance. The vibrant colors and intricate designs make it one of the most iconic temple structures in India.</p>
     </div>
 
     <!-- Heritage Site Details Section -->
@@ -39,41 +39,44 @@
             <tbody>
                 <tr>
                     <td>Location📍</td>
-                    <td>Mahabalipuram (near Chennai)</td>
+                    <td>Madurai</td>
                 </tr>
                 <tr>
                     <td>God🙏</td>
-                    <td>Shiva</td>
+                    <td>Meenakshi and Sundareswarar</td>
                 </tr>
                 <tr>
-                    <td>Timings⏰</td>
-                    <td>6.00 AM - 6.00 PM</td>
+                    <td>Morning Timings🌅</td>
+                    <td>5.30 AM to 12.00 PM</td>
                 </tr>
-                
+                <tr>
+                    <td>Evening Timings🌇</td>
+                    <td>4.00 PM to 9.30 PM</td>
+                </tr>
                 <tr>
                     <td>Contact📞</td>
                     <td>0452-2344360</td>
                 </tr>
                 <tr>
                     <td>Built by🏗️</td>
-                    <td>Pallava Dynasty</td>
+                    <td>King Kulasekara Pandya</td>
                 </tr>
                 <tr>
                     <td>Special Occasion🎉</td>
-                    <td>Indian Dance Festival , Pongal , Shivaratri , Navaratri</td>
+                    <td>Chithirai Festival , Thirukalyanam Festival , Navaratri Festival</td>
                 </tr>
                 <tr>
                     <td>Nearest Places To Visit🗺️</td>
-                    <td>Arjuna's Penance , Pancha Rathas , Tiger Cave</td>
+                    <td>Thirumalai Nayakkar Palace , Gandhi Memorial Museum , Mariamman Teppakulam</td>
                 </tr>
             </tbody>
         </table>
 
         
         <!-- Button for Directions (opens Google Maps in new tab) -->
-        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=12.61652,80.19930', '_blank')">Get Directions</button>
+        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=9.9200174,78.1179305', '_blank')">Get Directions</button>
     </section>
-    <!-- Language Request Section -->
+   <!-- Language Request Section -->
    <section id="language">
     <label for="language">Select Language for audio tour:</label>
     <select id="language" onchange="setLanguage(event)">
@@ -88,14 +91,13 @@
 
 <!-- Audio Guide Section -->
 <section id="audio-guide">
+   
     
-    
-     <!-- Audio element for the guide -->
-     <audio id="audio-tour" controls>
-        <source src="Mahabalipuram_Temple_enAudio_Tour.mp3" type="audio/mp3">
+    <!-- Audio element for the guide -->
+    <audio id="audio-tour" controls>
+        <source src="Meenakshi_Amman_Temple_enAudio_Tour.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-   
 </section>
 
 <!-- Script to handle logic -->
@@ -110,15 +112,15 @@
     function setLanguage(event) {
         var selectedLanguage = event.target.value;
         if (selectedLanguage === "en") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_enAudio_Tour.mp3";  // English audio
+            document.getElementById("audio-tour").src = "audio tour/Meenakshi_Amman_Temple_enAudio_Tour.mp3";  // English audio
         } else if (selectedLanguage === "ta") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_taAudio_Tour.mp3";  // French audio 
+            document.getElementById("audio-tour").src = "audio tour/Meenakshi_Amman_Temple_taAudio_Tour.mp3";  // French audio 
         } else if (selectedLanguage === "fr") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_frAudio_Tour.mp3";  // Spanish audio
+            document.getElementById("audio-tour").src = "audio tour/Meenakshi_Amman_Temple_frAudio_Tour.mp3";  // Spanish audio
         } else if (selectedLanguage === "ge") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_deAudio_Tour.mp3";  // German audio
+            document.getElementById("audio-tour").src = "audio tour/Meenakshi_Amman_Temple_deAudio_Tour.mp3";  // German audio
         } else if (selectedLanguage === "hi") {
-            document.getElementById("audio-tour").src = "audio tour/Mahabalipuram_Temple_hiAudio_Tour.mp3";  // Hindi audio
+            document.getElementById("audio-tour").src = "audio tour/Meenakshi_Amman_Temple_hiAudio_Tour.mp3";  // Hindi audio
         }
     }
 </script>
@@ -134,7 +136,7 @@
     Your browser does not support the audio element.
 </audio>
 
-    <!-- Script to handle logic -->
-    <script src="frntmain.js"></script>
+ <!-- Script to handle logic -->
+ <script src="frntmain.js"></script>
 </body>
 </html>
